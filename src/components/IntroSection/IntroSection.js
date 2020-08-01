@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
-import { TweenMax, Power3, TimelineMax } from "gsap";
+import gsap, { TweenMax, Power3, TimelineMax } from "gsap";
 import Counter from "../Counter/Counter";
+
+gsap.registerPlugin(TweenMax, Power3, TimelineMax);
 
 const IntroSection = ({ setRenderIntro }) => {
   let introText = useRef();

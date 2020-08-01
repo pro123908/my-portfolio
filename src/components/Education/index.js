@@ -1,5 +1,7 @@
 import React, { useRef, useEffect } from "react";
-import { TweenMax, Power3, TimelineMax } from "gsap";
+import gsap, { TweenMax, Power3, TimelineMax } from "gsap";
+
+gsap.registerPlugin(TweenMax, Power3, TimelineMax);
 
 const Education = () => {
   const EducationHeader = useRef(null);
