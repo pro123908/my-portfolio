@@ -1,50 +1,5 @@
 @import "./sass/main.scss";
 
-.intro-text {
-  font-size: 5rem;
-  // padding-top: 2rem;
-  text-align: center;
-  letter-spacing: 0.5rem;
-  text-transform: capitalize;
-  // height: 15vh;
-}
-
-.intro-self {
-  font-size: 4rem;
-  text-align: center;
-  letter-spacing: 0.5rem;
-  font-weight: 500;
-  text-transform: capitalize;
-  // height: 80vh;
-}
-
-.intro-self-1,
-.intro-self-2 {
-  display: inline-block;
-}
-
-.intro-self-1 {
-  margin-right: 1rem;
-}
-
-.intro-self-3 {
-  font-size: 6rem;
-  margin-top: 5rem;
-  text-transform: uppercase;
-  letter-spacing: 1rem;
-  background-color: #000;
-  color: #fff;
-}
-
-.app {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh;
-
-  // align-items: center;
-}
-
 .counter {
   position: absolute;
   top: 0;

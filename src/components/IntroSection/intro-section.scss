@@ -1,0 +1,42 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+
+  &__text {
+    font-size: 5rem;
+    // padding-top: 2rem;
+    text-align: center;
+    letter-spacing: 0.5rem;
+    text-transform: capitalize;
+    // height: 15vh;
+  }
+
+  &__self {
+    font-size: 4rem;
+    text-align: center;
+    letter-spacing: 0.5rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    // height: 80vh;
+
+    &-1 {
+      display: inline-block;
+      margin-right: 1rem;
+    }
+
+    &-2 {
+      display: inline-block;
+    }
+
+    &-3 {
+      font-size: 6rem;
+      margin-top: 10rem;
+      text-transform: uppercase;
+      letter-spacing: 1rem;
+      background-color: #000;
+      color: #fff;
+    }
+  }
+}
