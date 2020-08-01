@@ -1,8 +1,8 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { TweenMax, Power3, TimelineMax } from "gsap";
 import Counter from "../Counter/Counter";
 
-const IntroSection = () => {
+const IntroSection = ({ setRenderIntro }) => {
   let introText = useRef();
   let introSelf1 = useRef();
   let introSelf2 = useRef();
@@ -35,9 +35,12 @@ const IntroSection = () => {
 
     // testTimeline.delay(introTimeline.duration() + 4);
 
-    setTimeout(() => {
+    setTimeout(async () => {
       introTimeline.timeScale(3);
-      introTimeline.reverse();
+      await introTimeline.reverse();
+      setTimeout(() => {
+        setRenderIntro(false);
+      }, 500);
     }, (introTimeline.duration() + 3) * 1000);
 
     // TweenMax.from(introText.current, 1, {
