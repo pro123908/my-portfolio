@@ -8,8 +8,21 @@
 
 html {
   font-size: $root-font-size;
+
+  @media only screen and (max-width: $bp-largest) {
+    font-size: 55%;
+  }
+
+  @media only screen and (max-width: $bp-large) {
+    font-size: 50%;
+  }
+
+  @media only screen and (max-width: $bp-high) {
+    font-size: 45%;
+  }
 }
 
 body {
   box-sizing: inherit;
+  overflow: hidden;
 }
