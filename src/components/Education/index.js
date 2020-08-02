@@ -1,9 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import gsap, { TweenMax, Power3, TimelineMax } from "gsap";
+import Counter from "../Counter/Counter";
 
 gsap.registerPlugin(TweenMax, Power3, TimelineMax);
 
-const Education = () => {
+const Education = ({ setRenderEducation, setRenderSkills }) => {
   const EducationHeader = useRef(null);
   const EducationDesc1 = useRef(null);
   const EducationDesc2 = useRef(null);
@@ -37,10 +38,20 @@ const Education = () => {
         { y: "100vh", opacity: 0, ease: Power3 },
         "<.3"
       );
+
+    setTimeout(async () => {
+      EducationTimeline.timeScale(3);
+      await EducationTimeline.reverse();
+      setTimeout(() => {
+        setRenderEducation(false);
+        setRenderSkills(true);
+      }, 500);
+    }, (EducationTimeline.duration() + 6) * 1000);
   }, []);
 
   return (
     <div className="education">
+      <Counter time={11} />
       <div className="education__header" ref={EducationHeader}>
         Current Education
       </div>

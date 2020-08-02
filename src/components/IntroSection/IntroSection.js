@@ -4,7 +4,7 @@ import Counter from "../Counter/Counter";
 
 gsap.registerPlugin(TweenMax, Power3, TimelineMax);
 
-const IntroSection = ({ setRenderIntro }) => {
+const IntroSection = ({ setRenderIntro, setRenderEducation }) => {
   let introText = useRef();
   let introSelf1 = useRef();
   let introSelf2 = useRef();
@@ -42,6 +42,7 @@ const IntroSection = ({ setRenderIntro }) => {
       await introTimeline.reverse();
       setTimeout(() => {
         setRenderIntro(false);
+        setRenderEducation(true);
       }, 500);
     }, (introTimeline.duration() + 3) * 1000);
 

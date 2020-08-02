@@ -6,16 +6,51 @@ import Skills from "./components/Skills/Skills";
 
 function App() {
   let [renderIntro, setRenderIntro] = useState(true);
+  let [renderEducation, setRenderEducation] = useState(true);
+  let [renderSkills, setRenderSkills] = useState(false);
+
+  const getSection = () => {
+    if (renderIntro)
+      return (
+        <IntroSection
+          setRenderIntro={setRenderIntro}
+          setRenderEducation={setRenderEducation}
+        />
+      );
+    else if (renderEducation) {
+      return (
+        <Education
+          setRenderEducation={setRenderEducation}
+          setRenderSkills={setRenderSkills}
+        />
+      );
+    } else if (renderSkills) {
+      return <Skills setRenderSkills={setRenderSkills} />;
+    } else {
+      return "";
+    }
+  };
 
   return (
     <div className="app">
-      {/* {renderIntro ? (
-        <IntroSection setRenderIntro={setRenderIntro} />
-      ) : (
-        <Education />
-      )} */}
+      {/* {getSection()} */}
 
-      <Skills />
+      {renderIntro ? (
+        <IntroSection
+          setRenderIntro={setRenderIntro}
+          setRenderEducation={setRenderEducation}
+        />
+      ) : renderEducation ? (
+        <Education
+          setRenderEducation={setRenderEducation}
+          setRenderSkills={setRenderSkills}
+        />
+      ) : (
+        <Skills setRenderSkills={setRenderSkills} />
+      )}
+
+      {/* <Education /> */}
+      {/* <Skills /> */}
     </div>
   );
 }

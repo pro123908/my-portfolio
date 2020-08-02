@@ -9,7 +9,7 @@ const Counter = ({ time }) => {
       setCounter((counter) => {
         console.log(counter);
         if (counter === 0) {
-          setText("Reversed");
+          setText("");
           clearInterval(interval);
         } else return counter - 1;
       });
