@@ -9,32 +9,8 @@ function App() {
   let [renderEducation, setRenderEducation] = useState(true);
   let [renderSkills, setRenderSkills] = useState(false);
 
-  const getSection = () => {
-    if (renderIntro)
-      return (
-        <IntroSection
-          setRenderIntro={setRenderIntro}
-          setRenderEducation={setRenderEducation}
-        />
-      );
-    else if (renderEducation) {
-      return (
-        <Education
-          setRenderEducation={setRenderEducation}
-          setRenderSkills={setRenderSkills}
-        />
-      );
-    } else if (renderSkills) {
-      return <Skills setRenderSkills={setRenderSkills} />;
-    } else {
-      return "";
-    }
-  };
-
   return (
     <div className="app">
-      {/* {getSection()} */}
-
       {renderIntro ? (
         <IntroSection
           setRenderIntro={setRenderIntro}
@@ -48,9 +24,6 @@ function App() {
       ) : (
         <Skills setRenderSkills={setRenderSkills} />
       )}
-
-      {/* <Education /> */}
-      {/* <Skills /> */}
     </div>
   );
 }

@@ -26,16 +26,13 @@ const IntroSection = ({ setRenderIntro, setRenderEducation }) => {
       .from(introSelf2.current, 1, {
         y: "100vh",
         ease: Power3,
-        // delay: 1.5,
+
         scale: 2,
       })
       .from(introSelf3.current, 1, {
         x: "-100vw",
         ease: Power3,
-        // delay: 3,
       });
-
-    // testTimeline.delay(introTimeline.duration() + 4);
 
     setTimeout(async () => {
       introTimeline.timeScale(3);
@@ -45,31 +42,6 @@ const IntroSection = ({ setRenderIntro, setRenderEducation }) => {
         setRenderEducation(true);
       }, 500);
     }, (introTimeline.duration() + 3) * 1000);
-
-    // TweenMax.from(introText.current, 1, {
-    //   x: "-100%",
-    //   ease: Power3,
-    //   scale: 1.1,
-    // });
-
-    // TweenMax.from(introSelf1.current, 1, {
-    //   x: "-100vw",
-    //   ease: Power3,
-    //   delay: 1,
-    // });
-
-    // TweenMax.from(introSelf2.current, 1, {
-    //   y: "100vh",
-    //   ease: Power3,
-    //   delay: 1.5,
-    //   scale: 2,
-    // });
-
-    // TweenMax.from(introSelf3.current, 1, {
-    //   x: "-100vw",
-    //   ease: Power3,
-    //   delay: 3,
-    // });
   }, []);
 
   return (
