@@ -31,6 +31,8 @@ function App() {
       ) : (
         <Projects setRenderProjects={setRenderProjects} />
       )}
+
+      {/* <Projects setRenderProjects={setRenderProjects} /> */}
     </div>
   );
 }
