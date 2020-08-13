@@ -1,10 +1,12 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import gsap, { TweenMax, Power3, TimelineMax } from "gsap";
 import Counter from "../Counter/Counter";
+import SkipToNext from "../SkipToNext";
 
 gsap.registerPlugin(TweenMax, Power3, TimelineMax);
 
 const Education = ({ setRenderEducation, setRenderSkills }) => {
+  const [nextSectionTimer, setNextSectionTimer] = useState(null);
   const EducationHeader = useRef(null);
   const EducationDesc1 = useRef(null);
   const EducationDesc2 = useRef(null);
@@ -39,7 +41,7 @@ const Education = ({ setRenderEducation, setRenderSkills }) => {
         "<.3"
       );
 
-    setTimeout(async () => {
+    const timer = setTimeout(async () => {
       EducationTimeline.timeScale(3);
       await EducationTimeline.reverse();
       setTimeout(() => {
@@ -47,10 +49,16 @@ const Education = ({ setRenderEducation, setRenderSkills }) => {
         setRenderSkills(true);
       }, 500);
     }, (EducationTimeline.duration() + 6) * 1000);
+    setNextSectionTimer(timer);
   }, []);
 
   return (
     <div className="education">
+      <SkipToNext
+        currentSection={setRenderEducation}
+        nextSection={setRenderSkills}
+        interval={nextSectionTimer}
+      />
       <Counter time={11} />
       <div className="education__header" ref={EducationHeader}>
         Current Education

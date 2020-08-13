@@ -3,11 +3,13 @@ import "./App.scss";
 import IntroSection from "./components/IntroSection/IntroSection";
 import Education from "./components/Education";
 import Skills from "./components/Skills/Skills";
+import Projects from "./components/Projects";
 
 function App() {
   let [renderIntro, setRenderIntro] = useState(true);
   let [renderEducation, setRenderEducation] = useState(true);
   let [renderSkills, setRenderSkills] = useState(false);
+  let [renderProjects, setRenderProjects] = useState(false);
 
   return (
     <div className="app">
@@ -21,8 +23,13 @@ function App() {
           setRenderEducation={setRenderEducation}
           setRenderSkills={setRenderSkills}
         />
+      ) : renderSkills ? (
+        <Skills
+          setRenderSkills={setRenderSkills}
+          setRenderProjects={setRenderProjects}
+        />
       ) : (
-        <Skills setRenderSkills={setRenderSkills} />
+        <Projects setRenderProjects={setRenderProjects} />
       )}
     </div>
   );

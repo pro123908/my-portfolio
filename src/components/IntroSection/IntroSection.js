@@ -1,10 +1,12 @@
 import React, { useRef, useEffect, useState } from "react";
 import gsap, { TweenMax, Power3, TimelineMax } from "gsap";
 import Counter from "../Counter/Counter";
+import SkipToNext from "../SkipToNext";
 
 gsap.registerPlugin(TweenMax, Power3, TimelineMax);
 
 const IntroSection = ({ setRenderIntro, setRenderEducation }) => {
+  const [nextSectionTimer, setNextSectionTimer] = useState(null);
   let introText = useRef();
   let introSelf1 = useRef();
   let introSelf2 = useRef();
@@ -34,7 +36,7 @@ const IntroSection = ({ setRenderIntro, setRenderEducation }) => {
         ease: Power3,
       });
 
-    setTimeout(async () => {
+    const timerId = setTimeout(async () => {
       introTimeline.timeScale(3);
       await introTimeline.reverse();
       setTimeout(() => {
@@ -42,10 +44,17 @@ const IntroSection = ({ setRenderIntro, setRenderEducation }) => {
         setRenderEducation(true);
       }, 500);
     }, (introTimeline.duration() + 3) * 1000);
+
+    setNextSectionTimer(timerId);
   }, []);
 
   return (
     <div className="intro">
+      <SkipToNext
+        currentSection={setRenderIntro}
+        nextSection={setRenderEducation}
+        interval={nextSectionTimer}
+      />
       <Counter time={6} />
       <div className="intro__text" ref={introText}>
         Hello World, Welcome to my portfolio

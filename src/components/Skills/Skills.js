@@ -1,9 +1,12 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import gsap, { TweenMax, Power3, TimelineMax } from "gsap";
+import SkipToNext from "../SkipToNext";
+import Counter from "../Counter/Counter";
 
 gsap.registerPlugin(TweenMax, Power3, TimelineMax);
 
-const Skills = () => {
+const Skills = ({ setRenderSkills, setRenderProjects }) => {
+  const [nextSectionTimer, setNextSectionTimer] = useState(null);
   var frontendHeader = useRef(null);
   var backendHeader = useRef(null);
 
@@ -50,10 +53,29 @@ const Skills = () => {
         ease: Power3,
         stagger: 0.5,
       });
+
+    const timer = setTimeout(async () => {
+      frontendTimeline.timeScale(3);
+      frontendTimeline.reverse();
+      backendTimeline.timeScale(3);
+      backendTimeline.reverse();
+      setTimeout(() => {
+        setRenderSkills(false);
+        setRenderProjects(true);
+      }, 500);
+    }, (frontendTimeline.duration() + 2) * 1000);
+    setNextSectionTimer(timer);
   }, []);
 
   return (
     <div className="skills">
+      <SkipToNext
+        currentSection={setRenderSkills}
+        nextSection={setRenderProjects}
+        s
+        interval={nextSectionTimer}
+      />
+      <Counter time={4} />
       <div className="skills__frontend">
         <div className="skills__frontend-header" ref={frontendHeader}>
           Front End Skills
