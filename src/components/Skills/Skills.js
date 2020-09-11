@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import gsap, { TweenMax, Power3, TimelineMax } from "gsap";
 import SkipToNext from "../SkipToNext";
 import Counter from "../Counter/Counter";
+import { frontEndSkillsArray, backEndSkillsArray } from "../../Data/data";
 
 gsap.registerPlugin(TweenMax, Power3, TimelineMax);
 
@@ -15,9 +16,6 @@ const Skills = ({ setRenderSkills, setRenderProjects }) => {
 
   var backEndListItems = useRef([]);
   backEndListItems.current = [];
-
-  const frontEndSkills = ["HTML5/CSS3", "JAVASCRIPT", "REACTJS"];
-  const backEndSkills = ["NodeJS", "Express", "MongoDB"];
 
   const frontendTimeline = new TimelineMax({ defaults: { duration: 1 } });
   const backendTimeline = new TimelineMax({ defaults: { duration: 1 } });
@@ -81,7 +79,7 @@ const Skills = ({ setRenderSkills, setRenderProjects }) => {
           Front End Skills
         </div>
         <ul className="skills__frontend-list">
-          {frontEndSkills.map((el) => (
+          {frontEndSkillsArray.map((el) => (
             <li
               key={el}
               className="skills__frontend-list__item"
@@ -98,7 +96,7 @@ const Skills = ({ setRenderSkills, setRenderProjects }) => {
           Back End Skills
         </div>
         <ul className="skills__backend-list">
-          {backEndSkills.map((el) => (
+          {backEndSkillsArray.map((el) => (
             <li
               key={el}
               className="skills__backend-list__item"
